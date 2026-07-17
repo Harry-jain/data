@@ -1,7 +1,6 @@
 // textNode.js
 import React, { useState, useEffect, useRef } from 'react';
 import { BaseNode } from './BaseNode';
-import { useStore } from '../store';
 
 const extractVariables = (text) => {
   const regex = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
@@ -17,7 +16,7 @@ const extractVariables = (text) => {
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
-  const updateNodeStyle = useStore((state) => state.updateNodeStyle);
+  const [dimensions, setDimensions] = useState({ width: 220, height: 80 });
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -35,12 +34,9 @@ export const TextNode = ({ id, data }) => {
       const computedWidth = Math.max(220, Math.min(600, maxLineLength * 8 + 40));
       const computedHeight = Math.max(80, scrollHeight + 70);
 
-      updateNodeStyle(id, {
-        width: `${computedWidth}px`,
-        height: `${computedHeight}px`,
-      });
+      setDimensions({ width: computedWidth, height: computedHeight });
     }
-  }, [currText, id, updateNodeStyle]);
+  }, [currText]);
 
   const variables = extractVariables(currText);
   const N = variables.length;
@@ -80,6 +76,7 @@ export const TextNode = ({ id, data }) => {
       id={id}
       data={data}
       title="Text"
+      style={{ width: `${dimensions.width}px`, height: `${dimensions.height}px` }}
       fields={fields}
       handles={handles}
     />

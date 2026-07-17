@@ -1,6 +1,6 @@
 // submit.js
 import { useStore } from './store';
-import { shallow } from 'zustand/shallow';
+import { useShallow } from 'zustand/react/shallow';
 
 const selector = (state) => ({
   nodes: state.nodes,
@@ -8,7 +8,7 @@ const selector = (state) => ({
 });
 
 export const SubmitButton = () => {
-  const { nodes, edges } = useStore(selector, shallow);
+  const { nodes, edges } = useStore(useShallow(selector));
 
   const handleSubmit = async () => {
     try {

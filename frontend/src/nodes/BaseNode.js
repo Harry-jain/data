@@ -25,12 +25,12 @@ export const BaseNode = ({ id, data, title, fields = [], handles = [], style = {
   // Sync initial default values to the store if not present
   useEffect(() => {
     fields.forEach((field) => {
-      const val = data?.[field.name] ?? field.defaultValue;
-      if (data?.[field.name] === undefined && val !== undefined) {
-        updateNodeField(id, field.name, val);
+      if (data?.[field.name] === undefined && field.defaultValue !== undefined) {
+        updateNodeField(id, field.name, field.defaultValue);
       }
     });
-  }, [id, fields, data, updateNodeField]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = (name, val, customOnChange) => {
     setFormValues((prev) => ({ ...prev, [name]: val }));
