@@ -1,0 +1,126 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #0B0F19;
+  color: #F8FAFC;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* React Flow styling overrides for Dark Theme */
+.react-flow__renderer {
+  background-color: #0F172A;
+}
+
+.react-flow__controls {
+  background-color: #1C2536 !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background-color: #1C2536 !important;
+  color: #94A3B8 !important;
+  border-bottom: 1px solid #334155 !important;
+  fill: currentColor !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #334155 !important;
+  color: #F8FAFC !important;
+}
+
+.react-flow__minimap {
+  background-color: #1E293B !important;
+  border: 1px solid #334155 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(11, 15, 25, 0.7) !important;
+}
+
+.react-flow__minimap-node {
+  fill: #6366F1 !important;
+  stroke: #475569 !important;
+  stroke-width: 2px !important;
+}
+
+/* Custom interactive node handle styling */
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.8);
+}
+
+.react-flow__handle-connecting {
+  background-color: #F59E0B !important;
+}
+
+.react-flow__handle-valid {
+  background-color: #10B981 !important;
+}
+
+/* Beautiful connection edge styles */
+.react-flow__edge-path {
+  stroke: #6366F1 !important;
+  stroke-width: 2.5px !important;
+  transition: stroke 0.2s;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #10B981 !important;
+}
+
+/* Draggable Node hover improvements */
+.toolbar-draggable-node {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1.5px solid #334155;
+  user-select: none;
+}
+
+.toolbar-draggable-node:hover {
+  transform: translateY(-2px);
+  border-color: #6366F1;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+  cursor: grab;
+}
+
+.toolbar-draggable-node:active {
+  cursor: grabbing;
+}
